@@ -4,8 +4,7 @@
 		<script>
 		    function testPermission()
 		    {
-		        screenDetails = getScreenDetails().catch(e =>{ console.error(e.name + " " + e.message); return null; });
-			console.error(screenDetails);
+		        screenDetails = getScreenDetails().catch(e =>{ console.error(e.name + " " + e.message); return null; }).then((res) => {console.error(res);});
 		    }
 		</script>
 		<button onclick="testPermission()">TEST</button>
