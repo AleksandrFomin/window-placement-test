@@ -1,8 +1,11 @@
 <html>
 
-	<head>
-		<script type="text/javascript" src="main.js"></script>
-	</head>
+	<script>
+	    function test()
+	    {
+	        screenDetails = await getScreenDetails().catch(e =>{ console.error(e.name + " " + e.message); return null; });
+	    }
+	</script>
 
 	<body>
 		<button onclick="test()">TEST</button>
