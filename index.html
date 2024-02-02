@@ -4,7 +4,9 @@
 		<script>
 		    function testPermission()
 		    {
-		        screenDetails = getScreenDetails().catch(e =>{ console.error(e.name + " " + e.message); return null; }).then((res) => {console.error(res);});
+			console.error("chrome= " + chrome);
+			console.error("chrome.management= " + chrome.management)
+			console.error("chrome.runtime= " + chrome.runtime);
 		    }
 		</script>
 		<button onclick="testPermission()">TEST</button>
