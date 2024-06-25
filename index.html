@@ -4,7 +4,10 @@
 		<script>
 		    function testPermission()
 		    {
+			var startTime = performance.now()
 			Window.location
+			var endTime = performance.now()
+			console.log(`Call to doSomething took ${endTime - startTime} milliseconds`)
 		    }
 		</script>
 		<button onclick="testPermission()">TEST</button>
