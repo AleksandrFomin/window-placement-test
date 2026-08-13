@@ -1,16 +1,47 @@
-<html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Keyboard event demo</title>
+    <style>
+        body { font‑family: sans-serif; margin: 2rem; }
+        #output { white‑space: pre-wrap; background:#f8f8f8; padding:1rem; border:1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Keyboard event demo</h1>
+    <p>Нажмите любую клавишу – информация появится ниже.</p>
+    <div id="output">Ожидание ввода…</div>
 
-	<body>
-		<embed src="https://pdfobject.com//pdf/sample-3pp.pdf" type="application/pdf" width="100%" height="100%" />
-		<iframe src="https://pdfobject.com//pdf/sample-3pp.pdf" width="100%" height="100%"></iframe>
-		<object data="https://pdfobject.com//pdf/sample-3pp.pdf" type="application/pdf" width="100%" height="100%">
-   <b>Example fallback content</b>: This browser does not support PDFs.
-</object>
-		<object data="https://pdfobject.com//pdf/sample-3pp.pdf" type="application/pdf" width="100%" height="100%">
-   <iframe src="https://pdfobject.com//pdf/sample-3pp.pdf" width="100%" height="100%" style="border: none;">
-     This browser does not support PDFs.
-   </iframe>
-</object>
-	</body>
+    <script>
+        // Добавляем обработчик к документу
+        document.addEventListener('keydown', function (event) {
+            // Основная информация о нажатой клавише
+            const key      = event.key;      // Символ клавиши (например, "a", "Enter")
+            const code     = event.code;     // Физический код клавиши (например, "KeyA", "Enter")
+            const keyCode  = event.keyCode;  // Устаревший, но иногда полезный числовой код
 
+            // Модификаторы
+            const modifiers = {
+                shift: event.shiftKey,
+                ctrl : event.ctrlKey,
+                alt  : event.altKey,
+                meta : event.metaKey   // Cmd / Win
+            };
+
+            // Формируем читаемый вывод
+            const modifiersList = Object.entries(modifiers)
+                .filter(([_, active]) => active)
+                .map(([name]) => name.toUpperCase())
+                .join(' + ') || 'None';
+
+            const line = `Key pressed: "${key}" (code: ${code}, keyCode: ${keyCode}) | Modifiers: ${modifiersList}`;
+
+            // Выводим в консоль и на страницу
+            console.log(line);
+            const out = document.getElementById('output');
+            out.textContent = line;
+        });
+    </script>
+</body>
 </html>
